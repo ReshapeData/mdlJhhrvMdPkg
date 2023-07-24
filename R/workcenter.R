@@ -47,3 +47,19 @@ deleteAllcache_workcenter <- function(token='057A7F0E-F187-4975-8873-AF71666429A
 
 
 }
+#' 责任中心查询
+#'
+#' @param token
+#'
+#' @return 无返回值
+#' @export
+#'
+#' @examples
+#' ViewWorkcenter()
+ViewWorkcenter<- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+  sql=paste0("SELECT * from rds_hrv_src_md_workcenter")
+  res=tsda::sql_select2(token = token,sql = sql)
+  return(res)
+
+
+}
