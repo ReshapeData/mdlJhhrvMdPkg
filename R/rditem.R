@@ -47,3 +47,20 @@ deleteAllcache_rditem <- function(token='057A7F0E-F187-4975-8873-AF71666429AB') 
 
 
 }
+
+#' 研发项目查询
+#'
+#' @param token
+#'
+#' @return 无返回值
+#' @export
+#'
+#' @examples
+#' ViewRditem()
+ViewRditem<- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+  sql=paste0("SELECT * from rds_hrv_src_md_rditem")
+  res=tsda::sql_select2(token = token,sql = sql)
+  return(res)
+
+
+}
