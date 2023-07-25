@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' deleteChe_acctreclass()
-deleteCache_acctreclass<- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+deleteCache_acctreclass<- function(token='9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C') {
   sql=paste0("Delete from rds_hrv_src_md_acctreclass_input Where FNumber in(select FNumber from rds_hrv_src_md_acctreclass)")
 
   res=tsda::sql_delete2(token = token,sql_str = sql)
@@ -22,7 +22,7 @@ deleteCache_acctreclass<- function(token='057A7F0E-F187-4975-8873-AF71666429AB')
 #'
 #' @examples
 #' insertChe_acctreclass()
-insertCache_acctreclass <- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+insertCache_acctreclass <- function(token='9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C') {
   sql=paste0("Insert into rds_hrv_src_md_acctreclass
     Select * from rds_hrv_src_md_acctreclass_input ")
 
@@ -40,7 +40,7 @@ insertCache_acctreclass <- function(token='057A7F0E-F187-4975-8873-AF71666429AB'
 #'
 #' @examples
 #' deleteAllche_acctreclass()
-deleteAllcache_acctreclass <- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+deleteAllcache_acctreclass <- function(token='9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C') {
   sql=paste0("truncate table rds_hrv_src_md_acctreclass_input ")
   res=tsda::sql_delete2(token = token,sql_str = sql)
   return(res)
@@ -56,9 +56,19 @@ deleteAllcache_acctreclass <- function(token='057A7F0E-F187-4975-8873-AF71666429
 #'
 #' @examples
 #' ViewAcctreclass()
-ViewAcctreclass <- function(token='057A7F0E-F187-4975-8873-AF71666429AB') {
+ViewAcctreclass <- function(token='9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C') {
   sql=paste0("SELECT * from rds_hrv_src_md_acctreclass")
-  res=tsda::sql_select2(token = token,sql = sql)
+  data=tsda::sql_select2(token = token,sql = sql)
+  col_selected = c('FNumber','FAccountItemActual','FAccountItem')
+  dataview=data[ ,col_selected]
+  dataview$编码=data$FNumber
+
+  dataview$实际费用类别=data$FAccountItemActual
+
+  dataview$会计科目=data$FAccountItem
+
+  res=dataview[,c('编码','实际费用类别','会计科目')]
+
   return(res)
 
 

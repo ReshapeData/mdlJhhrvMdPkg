@@ -4,7 +4,7 @@
 \alias{ViewDept}
 \title{部门查询}
 \usage{
-ViewDept(token = "057A7F0E-F187-4975-8873-AF71666429AB")
+ViewDept(token = "9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C")
 }
 \arguments{
 \item{token}{}
