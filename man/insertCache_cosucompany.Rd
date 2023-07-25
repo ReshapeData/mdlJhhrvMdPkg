@@ -4,7 +4,7 @@
 \alias{insertCache_cosucompany}
 \title{科目更新}
 \usage{
-insertCache_cosucompany(token = "057A7F0E-F187-4975-8873-AF71666429AB")
+insertCache_cosucompany(token = "9ADDE293-1DC6-4EBC-B8A7-1E5CC26C1F6C")
 }
 \arguments{
 \item{token}{}
